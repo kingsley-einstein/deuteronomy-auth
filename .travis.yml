@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories: 
+    - "node_modules"
+services:
+  - postgresql
+env:
+  - DATABASE_TEST_NAME=travis DATABASE_TEST_HOST=127.0.0.1 DATABASE_TEST_PORT=5432 DATABASE_TEST_USER=postgres DATABASE_TEST_PASS=
+install:
+  - npm install
+before_script:
+  - psql -c 'drop database if exists travis;' -U postgres
+  - psql -c 'create database if not exists travis;' -U postgres
+script:
+  - npm run test:unix
+after_success:
+  - npm run coverage

@@ -13,7 +13,8 @@
     "linebreak-style": "off",
     "camelcase": "off",
     "comma-dangle": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "no-console": "off"
   },
   "parser": "babel-eslint",
   "extends": "airbnb-base"

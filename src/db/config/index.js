@@ -1,21 +1,31 @@
+import env from '../../env';
+
+const {
+  db: {
+    development, test, production
+  }
+} = env;
+
 export default {
   development: {
-    username: '',
-    password: '',
+    username: development.username,
+    password: development.password,
     dialect: 'postgres',
-    host: '',
+    host: development.host,
+    database: development.name,
     define: {
       underscored: true
     },
     sync: {
       force: false
-    }
+    },
   },
   test: {
-    username: '',
-    password: '',
+    username: test.username,
+    password: test.password,
     dialect: 'postgres',
-    host: '',
+    host: test.host,
+    database: test.name,
     define: {
       underscored: true
     },
@@ -24,10 +34,11 @@ export default {
     }
   },
   production: {
-    username: '',
-    password: '',
+    username: production.username,
+    password: production.password,
     dialect: 'postgres',
-    host: '',
+    host: production.host,
+    database: production.name,
     define: {
       underscored: true
     },
