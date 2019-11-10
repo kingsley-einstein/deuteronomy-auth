@@ -12,7 +12,7 @@ install:
   - npm install
 before_script:
   - psql -c 'drop database if exists travis;' -U postgres
-  - psql -c 'create database if not exists travis;' -U postgres
+  - psql -c 'create database travis;' -U postgres
 script:
   - npm run test:unix
 after_success:
