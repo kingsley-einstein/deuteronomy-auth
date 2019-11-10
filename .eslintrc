@@ -1,0 +1,21 @@
+{
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "eqeqeq": "off",
+    "max-len": "off",
+    "no-unused-vars": "error",
+    "linebreak-style": "off",
+    "camelcase": "off",
+    "comma-dangle": "off",
+    "no-param-reassign": "off",
+    "no-console": "off"
+  },
+  "parser": "babel-eslint",
+  "extends": "airbnb-base"
+}
