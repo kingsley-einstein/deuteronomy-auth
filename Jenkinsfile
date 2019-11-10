@@ -11,8 +11,8 @@ pipeline {
     }
     stage("Create Database") {
       steps {
-        bat "psql -h localhost -p 5432 -d postgres -c "DROP DATABASE IF EXISTS JENKINSDEUTERONOMYTESTDB" -U postgres"
-        bat "psql -h localhost -p 5432 -d postgres -c "CREATE DATABASE JENKINSDEUTERONOMYTESTDB" -U postgres"
+        bat "psql -h localhost -p 5432 -d postgres -c 'DROP DATABASE IF EXISTS JENKINSDEUTERONOMYTESTDB;' -U postgres"
+        bat "psql -h localhost -p 5432 -d postgres -c 'CREATE DATABASE JENKINSDEUTERONOMYTESTDB;' -U postgres"
       }
     }
   }
