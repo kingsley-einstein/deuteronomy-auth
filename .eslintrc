@@ -8,6 +8,13 @@
   },
   "rules": {
     "eqeqeq": "off",
-    "max-len": "off"
-  }
+    "max-len": "off",
+    "no-unused-vars": "error",
+    "linebreak-style": "off",
+    "camelcase": "off",
+    "comma-dangle": "off",
+    "no-param-reassign": "off"
+  },
+  "parser": "babel-eslint",
+  "extends": "airbnb-base"
 }
