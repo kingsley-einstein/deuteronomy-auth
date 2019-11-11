@@ -12,4 +12,14 @@ router.post(
   AuthController.create
 );
 
+router.post(
+  '/login_with_username',
+  AuthController.loginWithUsername
+);
+
+router.post(
+  '/login_with_email',
+  AuthController.loginWithEmail
+);
+
 export default router;

@@ -10,6 +10,7 @@ pipeline {
     DATABASE_TEST_PASS = 'password'
     DATABASE_TEST_HOST = '127.0.0.1'
     DATABASE_TEST_PORT = '5432'
+    COVERALLS_REPO_TOKEN = credentials('repo_token_from_coveralls')
   }
   stages {
     stage("Clone Repo And Pull Changes") {
