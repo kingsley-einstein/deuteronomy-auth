@@ -22,4 +22,22 @@ router.post(
   AuthController.loginWithEmail
 );
 
+router.patch(
+  '/update',
+  Auth.checkToken,
+  AuthController.update
+);
+
+router.get(
+  '/authenticate',
+  Auth.checkToken,
+  AuthController.authenticate
+);
+
+router.get(
+  '/logout',
+  Auth.checkToken,
+  AuthController.logOut
+);
+
 export default router;
