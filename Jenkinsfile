@@ -2,6 +2,7 @@ pipeline {
   agent any
   environment {
     GIT_URL = 'https://github.com/kingsley-einstein/deuteronomy-auth'
+    PGPASSWORD = 'password'
   }
   stages {
     stage("Clone Repo") {
