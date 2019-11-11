@@ -9,6 +9,7 @@ const {
 } = db;
 
 const root = '/api/v1/auth';
+let token = '';
 
 describe('Auth Tests', () => {
   before((done) => {
@@ -57,6 +58,7 @@ describe('Auth Tests', () => {
         })
         .end((err, res) => {
           const { status, body } = res;
+          token = body.body.token;
           console.table([body.body]);
           expect(status).to.eql(200);
           expect(body.body).to.have.keys('id', 'hash_id', 'token', 'email', 'username');
@@ -102,6 +104,52 @@ describe('Auth Tests', () => {
           const { status, body } = res;
           console.table([body]);
           expect(status).to.eql(400);
+          done(err);
+        });
+    });
+    it('should update a user', (done) => {
+      supertest(app)
+        .patch(`${root}/update`)
+        .set('Authorization', `Bearer ${token}`)
+        .send({
+          password: 'password12345'
+        })
+        .end((err, res) => {
+          const { status, body } = res;
+          console.table([body]);
+          expect(status).to.eql(200);
+          done(err);
+        });
+    });
+    it('should respond with a 401 when authenticating without a token', (done) => {
+      supertest(app)
+        .get(`${root}/authenticate`)
+        .end((err, res) => {
+          const { status, body } = res;
+          console.table([body]);
+          expect(status).to.eql(401);
+          done(err);
+        });
+    });
+    it('should authenticate user', (done) => {
+      supertest(app)
+        .get(`${root}/authenticate`)
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          const { status, body } = res;
+          console.table([body.body]);
+          expect(status).to.eql(200);
+          done(err);
+        });
+    });
+    it('should log user out', (done) => {
+      supertest(app)
+        .get(`${root}/logout`)
+        .set('Authorization', `Bearer ${token}`)
+        .end((err, res) => {
+          const { status, body } = res;
+          console.table([body]);
+          expect(status).to.eql(200);
           done(err);
         });
     });

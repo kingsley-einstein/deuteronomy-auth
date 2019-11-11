@@ -7,7 +7,9 @@ export default class Jwt {
    * @param {*} payload
    */
   static encode(payload) {
-    return jwt.sign(payload, env.jwt_secret);
+    return jwt.sign(payload, env.jwt_secret, {
+      expiresIn: '7d'
+    });
   }
 
   /**

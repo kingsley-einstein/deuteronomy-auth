@@ -2,17 +2,20 @@ export default (sequelize, DataTypes) => {
   const Blacklist = sequelize.define('blacklist', {
     id: {
       type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      primaryKey: true
     },
     token: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     }
   });
+
   Blacklist.findByToken = (token) => Blacklist.findOne({
     where: {
       token
     }
   });
+
+  return Blacklist;
 };

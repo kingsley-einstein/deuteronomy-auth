@@ -4,7 +4,7 @@ import helpers from '../helpers';
 
 const { Jwt } = helpers;
 const {
-  models: { User }
+  models: { User, Blacklist }
 } = db;
 
 export default class AuthController {
@@ -123,6 +123,94 @@ export default class AuthController {
       res.status(200).json({
         statusCode: 200,
         body: data
+      });
+    } catch (error) {
+      res.status(500).json({
+        statusCode: 500,
+        body: error
+      });
+    }
+  }
+
+  /**
+   *
+   * @param {Request} req
+   * @param {Response} res
+   */
+  static async update(req, res) {
+    try {
+      const { user, body } = req;
+      const update = await User.update(body, {
+        where: {
+          id: user.id
+        },
+        individualHooks: true,
+        returning: true
+      });
+      if (!update) {
+        res.status(500).json({
+          statusCode: 500,
+          body: 'Update failed'
+        });
+        return;
+      }
+      res.status(200).json({
+        statusCode: 200,
+        body: 'Successfully updated'
+      });
+    } catch (error) {
+      res.status(500).json({
+        statusCode: 500,
+        body: error
+      });
+    }
+  }
+
+  /**
+   *
+   * @param {Request} req
+   * @param {Response} res
+   */
+  static async authenticate(req, res) {
+    try {
+      const { user } = req;
+      const body = {
+        id: user.id,
+        hash_id: user.hash_id,
+        email: user.email,
+        username: user.username
+      };
+      res.status(200).json({
+        statusCode: 200,
+        body
+      });
+    } catch (error) {
+      res.status(500).json({
+        statusCode: 500,
+        body: error
+      });
+    }
+  }
+
+  /**
+   *
+   * @param {Request} req
+   * @param {Response} res
+   */
+  static async logOut(req, res) {
+    try {
+      const { token, user } = req;
+      const invalidated = await Blacklist.create({ token });
+      if (!invalidated) {
+        res.status(500).json({
+          statusCode: 500,
+          body: 'Unable to sign user out'
+        });
+        return;
+      }
+      res.status(200).json({
+        statusCode: 200,
+        body: `Successfully signed out user ${user.username}`
       });
     } catch (error) {
       res.status(500).json({
