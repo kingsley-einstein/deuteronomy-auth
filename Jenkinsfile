@@ -12,9 +12,10 @@ pipeline {
     DATABASE_TEST_PORT = '5432'
   }
   stages {
-    stage("Clone Repo") {
+    stage("Clone Repo And Pull Changes") {
       steps {
-        git "${GIT_URL}"
+        git "${GIT_URL}",
+        bat 'git pull origin HEAD'
       }
     }
     stage("Create Database") {
@@ -30,7 +31,7 @@ pipeline {
     }
     stage("Run Tests") {
       steps {
-        bat 'set NODE_ENV=test&& npm test'
+        bat 'npm run test:windows'
       }
     }
     stage("Run Coverage") {
