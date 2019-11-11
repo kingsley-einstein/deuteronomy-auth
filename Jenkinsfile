@@ -3,8 +3,8 @@ pipeline {
   environment {
     GIT_URL = 'https://github.com/kingsley-einstein/deuteronomy-auth'
     PGPASSWORD = 'password'
-    TEST_PORT = '6188',
-    JWT_SECRET = 'secret'
+    TEST_PORT = '6188'
+    JWT_SECRET = 's3cr3t'
     DATABASE_TEST_NAME = 'JENKINSDEUTERONOMYTESTDB'
     DATABASE_TEST_USER = 'postgres'
     DATABASE_TEST_PASS = 'password'
