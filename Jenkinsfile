@@ -20,8 +20,8 @@ pipeline {
     }
     stage("Create Database") {
       steps {
-        bat 'psql -c "DROP DATABASE IF EXISTS JENKINSDEUTERONOMYTESTDB;" -U postgres'
-        bat 'psql -c "CREATE DATABASE JENKINSDEUTERONOMYTESTDB;" -U postgres'
+        bat 'psql -h 127.0.0.1 -p 5432 -c "DROP DATABASE IF EXISTS JENKINSDEUTERONOMYTESTDB;" -U postgres'
+        bat 'psql -h 127.0.0.1 -p 5432 -c "CREATE DATABASE JENKINSDEUTERONOMYTESTDB;" -U postgres'
       }
     }
     stage("Install Dependencies") {
