@@ -10,7 +10,7 @@
     "test": "nyc mocha ./src/tests/**.test.js --require @babel/polyfill --require @babel/register -R spec --timeout 50000 --exit",
     "test:windows": "set NODE_ENV=test&& npm test",
     "test:unix": "export NODE_ENV=test && npm test",
-    "coverage": "nyc report --reporter=text-lcov | coverage && nyc report --reporter=lcov"
+    "coverage": "nyc report --reporter=text-lcov | coveralls && nyc report --reporter=lcov"
   },
   "repository": {
     "type": "git",
