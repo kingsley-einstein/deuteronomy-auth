@@ -7,7 +7,7 @@ pipeline {
     JWT_SECRET = 'secret'
     DATABASE_TEST_NAME = 'JENKINSDEUTERONOMYTESTDB'
     DATABASE_TEST_USER = 'postgres'
-    DATABASE_TEST_PASS = 'password',
+    DATABASE_TEST_PASS = 'password'
     DATABASE_TEST_HOST = '127.0.0.1'
     DATABASE_TEST_PORT = '5432'
   }
