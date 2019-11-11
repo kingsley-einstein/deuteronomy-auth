@@ -3,7 +3,13 @@ pipeline {
   environment {
     GIT_URL = 'https://github.com/kingsley-einstein/deuteronomy-auth'
     PGPASSWORD = 'password'
-    TEST_PORT = '6188'
+    TEST_PORT = '6188',
+    JWT_SECRET = 'secret'
+    DATABASE_TEST_NAME = 'JENKINSDEUTERONOMYTESTDB'
+    DATABASE_TEST_USER = 'postgres'
+    DATABASE_TEST_PASS = 'password',
+    DATABASE_TEST_HOST = '127.0.0.1'
+    DATABASE_TEST_PORT = '5432'
   }
   stages {
     stage("Clone Repo") {
@@ -24,7 +30,7 @@ pipeline {
     }
     stage("Run Tests") {
       steps {
-        bat 'npm run test:windows'
+        bat 'set NODE_ENV=test&& npm test'
       }
     }
     stage("Run Coverage") {
