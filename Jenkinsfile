@@ -11,8 +11,8 @@ pipeline {
     }
     stage("Create Database") {
       steps {
-        bat "psql -c 'DROP DATABASE IF EXISTS JENKINSDEUTERONOMYTESTDB;' -U postgres"
-        bat "psql -c 'CREATE DATABASE JENKINSDEUTERONOMYTESTDB;' -U postgres"
+        bat 'psql -c "DROP DATABASE IF EXISTS JENKINSDEUTERONOMYTESTDB;" -U postgres'
+        bat 'psql -c "CREATE DATABASE JENKINSDEUTERONOMYTESTDB;" -U postgres'
       }
     }
   }
