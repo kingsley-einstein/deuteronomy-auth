@@ -3,6 +3,7 @@ pipeline {
   environment {
     GIT_URL = 'https://github.com/kingsley-einstein/deuteronomy-auth'
     PGPASSWORD = 'password'
+    TEST_PORT = '6188'
   }
   stages {
     stage("Clone Repo") {
