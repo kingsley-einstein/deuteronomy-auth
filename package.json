@@ -7,7 +7,7 @@
     "start:dev": "nodemon --exec babel-node src/index",
     "start:windows": "set NODE_ENV=development&& npm run start:dev",
     "start:unix": "export NODE_ENV=development && npm run start:dev",
-    "test": "nyc mocha ./src/**/**.test.js --require @babel/polyfill --require @babel/register -R spec --timeout 30000 --exit",
+    "test": "nyc mocha ./src/tests/**.test.js --require @babel/polyfill --require @babel/register -R spec --timeout 50000 --exit",
     "test:windows": "set NODE_ENV=test&& npm test",
     "test:unix": "export NODE_ENV=test && npm test",
     "coverage": "nyc report --reporter=text-lcov | coverage && nyc report --reporter=lcov"

@@ -16,5 +16,20 @@ pipeline {
         bat 'psql -c "CREATE DATABASE JENKINSDEUTERONOMYTESTDB;" -U postgres'
       }
     }
+    stage("Install Dependencies") {
+      steps {
+        bat 'npm install'
+      }
+    }
+    stage("Run Tests") {
+      steps {
+        bat 'npm run test:windows'
+      }
+    }
+    stage("Run Coverage") {
+      steps {
+        bat 'npm run coverage'
+      }
+    }
   }
 }

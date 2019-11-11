@@ -1,9 +1,7 @@
 const isProduction = process.env.NODE_ENV === 'production';
 
 if (!isProduction) {
-  import('dotenv').then((dotenv) => {
-    dotenv.config();
-  });
+  require('dotenv').config();
 }
 
 export default {
@@ -33,5 +31,6 @@ export default {
     development: process.env.DEV_PORT,
     test: process.env.TEST_PORT,
     production: process.env.PORT
-  }
+  },
+  jwt_secret: process.env.JWT_SECRET
 };
