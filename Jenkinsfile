@@ -5,7 +5,7 @@ pipeline {
     PGPASSWORD = 'password'
     TEST_PORT = '6188'
     JWT_SECRET = 's3cr3t'
-    DATABASE_TEST_NAME = 'JENKINSDEUTERONOMYTESTDB'
+    DATABASE_TEST_NAME = 'jenkinsdeuteronomytestdb'
     DATABASE_TEST_USER = 'postgres'
     DATABASE_TEST_PASS = 'password'
     DATABASE_TEST_HOST = '127.0.0.1'
