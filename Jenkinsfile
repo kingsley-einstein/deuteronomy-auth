@@ -14,7 +14,7 @@ pipeline {
   stages {
     stage("Clone Repo And Pull Changes") {
       steps {
-        git "${GIT_URL}",
+        git "${GIT_URL}"
         bat 'git pull origin HEAD'
       }
     }
