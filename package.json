@@ -25,6 +25,7 @@
   "homepage": "https://github.com/kingsley-einstein/deuteronomy-auth#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cloud-config-client": "^1.5.0",
     "eureka-js-client": "^4.5.0",
     "express": "^4.17.1",
     "feignjs": "0.0.6",

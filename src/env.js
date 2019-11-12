@@ -32,5 +32,10 @@ export default {
     test: process.env.TEST_PORT,
     production: process.env.PORT
   },
-  jwt_secret: process.env.JWT_SECRET
+  jwt_secret: process.env.JWT_SECRET,
+  cloud_opts: {
+    name: process.env.CLOUD_NAME,
+    endpoint: process.env.CLOUD_ENDPOINT,
+    profiles: process.env.CLOUD_PROFILES
+  }
 };
